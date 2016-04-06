@@ -62,6 +62,16 @@ angular.module('SimpleRESTIonic', ['ionic', 'backand', 'SimpleRESTIonic.controll
                     }
                 }
             })
+        
+         .state('tab.nearBeacons', {
+                url: '/nearBeacons',
+                views: {
+                    'tab-nearBeacons': {
+                        templateUrl: 'templates/tab-nearBeacons.html',
+                        controller: 'BeaconCtrl'
+                    }
+                }
+            })
            
         ;
 
