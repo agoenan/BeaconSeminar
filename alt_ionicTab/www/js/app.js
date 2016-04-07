@@ -50,14 +50,14 @@ angular.module('BeaconApp', ['ionic', , 'ngCordovaBeacon','backand', 'BeaconApp.
             .state('tab', {
                 url: '/tabs',
                 abstract: true,
-                templateUrl: 'templates/tabs.html'
+                templateUrl: 'templates/tabs/tabs.html'
             })
         
             .state('tab.dashboard', {
                 url: '/dashboard',
                 views: {
                     'tab-dashboard': {
-                        templateUrl: 'templates/tab-dashboard.html',
+                        templateUrl: 'templates/tabs/tab-dashboard.html',
                         controller: 'DashboardCtrl as vm'
                     }
                 }
@@ -67,7 +67,7 @@ angular.module('BeaconApp', ['ionic', , 'ngCordovaBeacon','backand', 'BeaconApp.
                 url: '/nearBeacons',
                 views: {
                     'tab-nearBeacons': {
-                        templateUrl: 'templates/tab-nearBeacons.html',
+                        templateUrl: 'templates/tabs/tab-nearBeacons.html',
                         controller: 'BeaconCtrl'
                     }
                 }
