@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'BeaconApp' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('BeaconApp', ['ionic', , 'ngCordovaBeacon','backand', 'BeaconApp.controllers', 'BeaconApp.services'])
+angular.module('BeaconApp', ['ionic', , 'ngCordovaBeacon','backand', 'BeaconApp.userManagementControllers','BeaconApp.beaconControllers','BeaconApp.itemControllers', 'BeaconApp.services'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
