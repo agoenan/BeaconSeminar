@@ -42,7 +42,7 @@ angular.module('SimpleRESTIonic.controllers', [])
 
 
 
-.controller("ExampleController", function($scope, $rootScope, $ionicPlatform, $cordovaBeacon) {
+.controller("BeaconCtrl", function($scope, $rootScope, $ionicPlatform, $cordovaBeacon) {
  
     $scope.beacons = {};
  

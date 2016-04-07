@@ -19,3 +19,15 @@
 .item-icon-left .icon, .item-icon-right .icon {
 	font-size: 22px;
 }
+
+/* Empty. Add your own CSS if you like */
+1
+2
+3
+4
+5
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
