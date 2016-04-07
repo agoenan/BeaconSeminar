@@ -1,4 +1,4 @@
-angular.module('SimpleRESTIonic.services', [])
+angular.module('BeaconApp.services', [])
 
     .service('APIInterceptor', function ($rootScope, $q) {
         var service = this;

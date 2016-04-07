@@ -1,4 +1,4 @@
-angular.module('SimpleRESTIonic.controllers', [])
+angular.module('BeaconApp.controllers', [])
 
     //Login Controller
     .controller('LoginCtrl', function (Backand, $state, $rootScope, LoginService,$ionicPopup) {
@@ -42,6 +42,7 @@ angular.module('SimpleRESTIonic.controllers', [])
 
 
 
+//BeaconController
 .controller("BeaconCtrl", function($scope, $rootScope, $ionicPlatform, $cordovaBeacon) {
  
     $scope.beacons = {};
@@ -100,7 +101,7 @@ angular.module('SimpleRESTIonic.controllers', [])
 
 
 
-//BeaconController 
+
 
     .controller('DashboardCtrl', function (ItemsModel, $rootScope) {
         var vm = this;
