@@ -5,15 +5,21 @@ angular.module('BeaconApp.userManagementControllers', [])
         var login = this;
      
         function signin() {
-            LoginService.signin(login.email, login.password)
-                .then(function () {
-                    onLogin();
-                }, function (error) {
-                     var alertPopup = $ionicPopup.alert({
-                         title: 'Login failed!',
-                         template: 'Please check your credentials!'
-                     });
-                })
+            
+            //for dev purposes
+             onLogin();
+            
+            
+            //productive version
+       //     LoginService.signin(login.email, login.password)
+       //            .then(function () {
+       //                onLogin();
+       //            }, function (error) {
+       //                 var alertPopup = $ionicPopup.alert({
+       //                     title: 'Login failed!',
+       //                     template: 'Please check your credentials!'
+       //                 });
+       //            })
         }
 
         function anonymousLogin(){
