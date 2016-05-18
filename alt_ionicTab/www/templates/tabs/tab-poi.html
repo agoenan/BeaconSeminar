@@ -1,14 +1,26 @@
 <ion-view view-title="Point of Interests">
         <ion-content class="padding has-header">           
-            <div class="bar bar-subheader">
-                <div class="list card" ng-repeat="object in poi.data">
-                             <h2 class="text-center">{{object.name}}</h2>
-                                       
-                    <div class="item item-body">
-                        {{object.UUID}}
-                    </div>
-                </div>
-            </div>
+            
+                
+                
+                <div class="list">
+
+    <a class="item item-avatar" ng-repeat="object in poi.data">
+      
+      <h2>{{object.subregion}}</h2>
+         <p>{{object.name}}</p>
+    </a>
+
+    
+
+</div>
+                
+            
+            
+                
+                
+             
+         
         </ion-content>
     
 </ion-view>

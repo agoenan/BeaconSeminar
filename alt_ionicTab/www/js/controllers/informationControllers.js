@@ -4,7 +4,7 @@ angular.module('BeaconApp.informationControllers', [])
 .controller("InformationCtrl", function($scope, $rootScope, $ionicPlatform) {
 
     
-    
+  
        
    //   var pageId = pluginResult.region.identifier
 

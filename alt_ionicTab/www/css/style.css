@@ -34,3 +34,23 @@ margin:0 auto;
 div{
   text-align: center;
 }
+
+
+.my-header
+{
+}
+
+.my-header-image
+{
+	width: 100%;
+	height: auto;
+}
+
+.my-icon-back
+{
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	width: 12%;
+	height: auto;
+}
