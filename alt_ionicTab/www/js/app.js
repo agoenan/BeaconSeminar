@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'BeaconApp' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('BeaconApp', ['ionic', , 'ngCordovaBeacon','backand', 'BeaconApp.userManagementControllers','BeaconApp.beaconControllers','BeaconApp.itemControllers', 'BeaconApp.informationControllers', 'BeaconApp.navigationControllers', 'BeaconApp.services', 'BeaconApp.itemServices', 'BeaconApp.userManagementServices']) 
+angular.module('BeaconApp', ['ionic', , 'ngCordovaBeacon','backand', 'BeaconApp.userManagementControllers','BeaconApp.beaconControllers','BeaconApp.poiControllers', 'BeaconApp.informationControllers', 'BeaconApp.navigationControllers', 'BeaconApp.services', 'BeaconApp.poiServices', 'BeaconApp.userManagementServices']) 
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -54,15 +54,15 @@ angular.module('BeaconApp', ['ionic', , 'ngCordovaBeacon','backand', 'BeaconApp.
                 templateUrl: 'templates/tabs/tabs.html'
             })
         
-     //       .state('tab.dashboard', {
-    //            url: '/dashboard',
-    //            views: {
-    //                'tab-dashboard': {
-    //                    templateUrl: 'templates/tabs/tab-dashboard.html',
-    //                    controller: 'DashboardCtrl as vm'
-    //                }
-    //            }
-    //        })
+           .state('tab.poi', {
+                url: '/poi',
+                views: {
+                    'tab-poi': {
+                        templateUrl: 'templates/tabs/tab-poi.html',
+                        controller: 'PoiCtrl as poi'
+                    }
+                }
+            })
         
          .state('tab.nearBeacons', {
                 url: '/nearBeacons',

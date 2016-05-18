@@ -6,20 +6,18 @@
                 
                 <i class="icon ion-speakerphone" ng-click="broadcast(value.minor)"></i>
                 
-                <div ng-switch on="{{value.major}}" class="row">
-                    <span ng-switch-when="10" ><b>Chair of Software Engineering</b></span>
-                    <span ng-switch-when="11"><b>Library</b></span>
+                <div class="row">
+                    <span ><b>{{value.region}}</b></span>
                 </div> 
                     
-                <div ng-switch on="{{value.minor}}" class="row">
-                    <span ng-switch-when="11">Office of Prof. Atkinson</span>
-                    <span ng-switch-when="12">B6, 2C01</span>
-                    <span ng-switch-when="13">A5</span>
+                <div class="row">
+                    <span>{{value.name}}</span>
                 </div>
              
    
                 <div class="col">
                   <p>{{value.proximity}}</p>   
+                      <p>{{value.distance}}</p>   
                   <p>RSSI {{value.rssiWidth}}</p>
                   <div style="background:rgb(72, 177, 238); height:20px; width: {{value.rssiWidth}}%;"></div>   
                 </div>
