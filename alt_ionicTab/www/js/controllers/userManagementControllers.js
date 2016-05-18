@@ -8,7 +8,7 @@ angular.module('BeaconApp.userManagementControllers', [])
             
             //for dev purposes
              onLogin();
-            
+                   
             
             //productive version
        //     LoginService.signin(login.email, login.password)
@@ -20,6 +20,20 @@ angular.module('BeaconApp.userManagementControllers', [])
        //                     template: 'Please check your credentials!'
        //                 });
        //            })
+            
+            
+            
+             cordova.plugins.locationManager.isBluetoothEnabled().then(function(booleanEnabledfromNativeLayer){
+                if (booleanEnabledfromNativeLayer) {
+                    return;
+                } else {
+	            cordova.plugins.locationManager.enableBluetooth(); 
+	             var alertPopup = $ionicPopup.alert({
+                         title: 'Info!',
+                         template: 'Bluetooth is activated now!'
+                     });
+                }
+            })
         }
 
         function anonymousLogin(){
@@ -29,7 +43,7 @@ angular.module('BeaconApp.userManagementControllers', [])
 
         function onLogin(){
             $rootScope.$broadcast('authorized');
-            $state.go('tab.dashboard');
+            $state.go('tab.nearBeacons');
         }
 
         function signout() {

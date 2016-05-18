@@ -1,26 +1,33 @@
-<ion-view view-title="nearBeacons">
+<ion-view view-title="Near Beacons">
     <ion-content class="padding has-header">
-        <div class="list">
-            <div class="item" ng-repeat="(key, value) in beacons">
-                <div class="row">
-                    <div class="col truncate">
-                        {{value.uuid}}
-                    </div>
+        <ul class="dynamic" id="beaconList">      
+        
+            <div class="item item-icon-right item-icon-left" ng-repeat="(key, value) in beacons">       
+                
+                <i class="icon ion-speakerphone" ng-click="broadcast(value.minor)"></i>
+                
+                <div ng-switch on="{{value.major}}" class="row">
+                    <span ng-switch-when="10" ><b>Chair of Software Engineering</b></span>
+                    <span ng-switch-when="11"><b>Library</b></span>
+                </div> 
+                    
+                <div ng-switch on="{{value.minor}}" class="row">
+                    <span ng-switch-when="11">Office of Prof. Atkinson</span>
+                    <span ng-switch-when="12">B6, 2C01</span>
+                    <span ng-switch-when="13">A5</span>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        major: {{value.major}}
-                    </div>
-                    <div class="col">
-                        minor: {{value.minor}}
-                    </div>
+             
+   
+                <div class="col">
+                  <p>{{value.proximity}}</p>   
+                  <p>RSSI {{value.rssiWidth}}</p>
+                  <div style="background:rgb(72, 177, 238); height:20px; width: {{value.rssiWidth}}%;"></div>   
                 </div>
-                <div class="row">
-                    <div class="col">
-                        {{value.proximity}}
-                    </div>
-                </div>
-            </div>
+                        
+                <i class="icon ion-navigate" ng-click=""></i>
+            </div>       
+                  
+             
         </div>
     </ion-content>
 </ion-view>

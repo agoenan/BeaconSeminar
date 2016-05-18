@@ -3,8 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'BeaconApp' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('BeaconApp', ['ionic', , 'ngCordovaBeacon','backand', 'BeaconApp.userManagementControllers','BeaconApp.beaconControllers','BeaconApp.itemControllers',
-                             'BeaconApp.services', 'BeaconApp.itemServices', 'BeaconApp.userManagementServices']) 
+angular.module('BeaconApp', ['ionic', , 'ngCordovaBeacon','backand', 'BeaconApp.userManagementControllers','BeaconApp.beaconControllers','BeaconApp.itemControllers', 'BeaconApp.informationControllers', 'BeaconApp.navigationControllers', 'BeaconApp.services', 'BeaconApp.itemServices', 'BeaconApp.userManagementServices']) 
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -25,6 +24,7 @@ angular.module('BeaconApp', ['ionic', , 'ngCordovaBeacon','backand', 'BeaconApp.
 
         // change here to your appName
         var appName = 'beaconapp';
+    	var beacons = {};
 
         // token is for anonymous login. see http://docs.backand.com/en/latest/apidocs/security/index.html#anonymous-access
         var token = '86d665e8-bb1c-4290-a124-2a80baac405d';
@@ -54,15 +54,15 @@ angular.module('BeaconApp', ['ionic', , 'ngCordovaBeacon','backand', 'BeaconApp.
                 templateUrl: 'templates/tabs/tabs.html'
             })
         
-            .state('tab.dashboard', {
-                url: '/dashboard',
-                views: {
-                    'tab-dashboard': {
-                        templateUrl: 'templates/tabs/tab-dashboard.html',
-                        controller: 'DashboardCtrl as vm'
-                    }
-                }
-            })
+     //       .state('tab.dashboard', {
+    //            url: '/dashboard',
+    //            views: {
+    //                'tab-dashboard': {
+    //                    templateUrl: 'templates/tabs/tab-dashboard.html',
+    //                    controller: 'DashboardCtrl as vm'
+    //                }
+    //            }
+    //        })
         
          .state('tab.nearBeacons', {
                 url: '/nearBeacons',
@@ -73,6 +73,30 @@ angular.module('BeaconApp', ['ionic', , 'ngCordovaBeacon','backand', 'BeaconApp.
                     }
                 }
             })
+        
+        
+         .state('tab.information', {
+                url: '/information',
+                views: {
+                    'tab-information': {
+                        templateUrl: 'templates/tabs/tab-information.html',
+                        controller: 'InformationCtrl'
+                    }
+                }
+            })
+           
+        
+        
+         .state('tab.navigation', {
+                url: '/navigation',
+                views: {
+                    'tab-navigation': {
+                        templateUrl: 'templates/tabs/tab-navigation.html',
+                        controller: 'NavigationCtrl'
+                    }
+                }
+            })
+           
            
         ;
 
