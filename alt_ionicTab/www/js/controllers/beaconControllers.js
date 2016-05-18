@@ -51,6 +51,7 @@ angular.module('BeaconApp.beaconControllers', [])
                     pluginResult.beacons[i].name = name;
                 }
             }
+            $rootScope.beaconList = pluginResult.beacons;
             $scope.$apply();
         });
  
@@ -58,11 +59,14 @@ angular.module('BeaconApp.beaconControllers', [])
         
 });
     
+     $rootScope.navigate = function(beacon) {
+         
+         	$('#beacon').append($rootScope.beaconList[0].rssi);
+           $state.go('tab.navigation');
+     }
+   
     
-    
-    
-    
-     $scope.broadcast = function(beacon) {
+     $rootScope.broadcast = function(beacon) {
          
       
          
@@ -75,66 +79,61 @@ strVar += "			<img class=\"my-icon-back\" src=\"img\/icon-back.png\" ontouchend=
 strVar += "		<\/div>";
 strVar += "        ";
 strVar += "		<div class=\"my-content\">";
-strVar += "			<h1>Seminar Schedule<\/h1>";
-strVar += "			<p>Prof. Dr. Colin Atkinson<\/p>";
+strVar += "			<h1>Software Engineering<\/h1>";
+strVar += "			<p>Seminar Schedule<\/p>";
+strVar += "			<p>19. Mai 2016 <\/p>";
 strVar += " ";
 strVar += "        <ul class=\"list\">          ";
 strVar += "            <li class=\"item\">";
-strVar += "               09:45 ahha";
+strVar += "               09:30 Dang, Thu Huong";
 strVar += "            <\/li>";
 strVar += "             <li class=\"item\">";
-strVar += "               09:45 ahha";
+strVar += "              09:45 Duendar, Tugba";
 strVar += "            <\/li>";
 strVar += "             <li class=\"item\">";
-strVar += "               09:45 ahha";
+strVar += "               10:00 Goenan, Ahmet";
 strVar += "            <\/li>";
 strVar += "             <li class=\"item\">";
-strVar += "               09:45 ahha";
+strVar += "              10:15 Guel, Rusen";
 strVar += "            <\/li>";
 strVar += "             <li class=\"item\">";
-strVar += "               09:45 ahha";
+strVar += "              11:15 Hernandez Torres, Valeria";
 strVar += "            <\/li>";
 strVar += "             <li class=\"item\">";
-strVar += "               09:45 ahha";
+strVar += "               11:30 Hu, Rui";
 strVar += "            <\/li>";
 strVar += "             <li class=\"item\">";
-strVar += "               09:45 ahha";
+strVar += "              11:45 Kharushka, Aliaksandra ";
 strVar += "            <\/li>";
 strVar += "             <li class=\"item\">";
-strVar += "               09:45 ahha";
+strVar += "               14:15 Mattr, Mohammed";
 strVar += "            <\/li>";
 strVar += "             <li class=\"item\">";
-strVar += "               09:45 ahha";
+strVar += "               14:30 Mohammed, Jahangir Ali";
 strVar += "            <\/li>";
 strVar += "             <li class=\"item\">";
-strVar += "               09:45 ahha";
+strVar += "               14:45 Nofal, Diaa";
 strVar += "            <\/li>";
 strVar += "             <li class=\"item\">";
-strVar += "               09:45 ahha";
+strVar += "               15:00 Sankaran, Vignesh";
 strVar += "            <\/li>";
 strVar += "             <li class=\"item\">";
-strVar += "               09:45 ahha";
+strVar += "               15:45 Schadrin, Elina";
 strVar += "            <\/li>";
 strVar += "             <li class=\"item\">";
-strVar += "               09:45 ahha";
+strVar += "               16:00 Gamze Özdemir";
 strVar += "            <\/li>";
 strVar += "             <li class=\"item\">";
-strVar += "               09:45 ahha";
-strVar += "            <\/li>";
-strVar += "             <li class=\"item\">";
-strVar += "               09:45 ahha";
-strVar += "            <\/li>";
-strVar += "             <li class=\"item\">";
-strVar += "               09:45 ahha";
+strVar += "              16:15 Schoenfelder, David Timothee";
 strVar += "            <\/li>";
 strVar += "<\/ul>";
 
-$('#beacon').append("");
-               
-               var element = $(strVar);
-		$('#beacon').append(element);
+//$('#beacon').append("");
                
                
+	
+               
+         $("#legend").html(strVar); 
                
                
                
@@ -142,6 +141,9 @@ $('#beacon').append("");
             }
          
      }
+         
+         
+  
     
      });
 
