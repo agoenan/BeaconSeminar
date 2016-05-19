@@ -13,8 +13,8 @@ angular.module('BeaconApp.beaconControllers', [])
         $rootScope.$on("$cordovaBeacon:didRangeBeaconsInRegion", function(event, pluginResult) {
             var uniqueBeaconKey;
             var rssiWidth = 1;
+            var distance = 1;
            
-            
             for(var i = 0; i < pluginResult.beacons.length; i++) {
                 
                 if (pluginResult.beacons[i].rssi < -100) {
@@ -27,30 +27,47 @@ angular.module('BeaconApp.beaconControllers', [])
                 pluginResult.beacons[i].rssiWidth = rssiWidth;
                 $scope.beacons[uniqueBeaconKey] = pluginResult.beacons[i];
                 
-           
-                
-                if( pluginResult.beacons[i].major == 10 &&  pluginResult.beacons[i].minor == 11){
-                    var region = "Chair of Software Engineering";
-                    var name = "B6, 2C01";
+                if( pluginResult.beacons[i].major == 100 && pluginResult.beacons[i].minor == 4){
+                    var region = "Library A5";
+                    var name = "Entrance";
+                    pluginResult.beacons[i].region = region;
+                    pluginResult.beacons[i].name = name;
+                    distance = Math.pow(10, (pluginResult.beacons[i].txPower - pluginResult.beacons[i].rssi)/(10*2));
+                    pluginResult.beacons[i].distance = distance;
                     
+                } else if(pluginResult.beacons[i].major == 100 &&  pluginResult.beacons[i].minor == 3){
+                    var region = "Library A5";
+                    var name = "Bookshelf Informatics";
                     pluginResult.beacons[i].region = region;
                     pluginResult.beacons[i].name = name;
                     
-                } else if(pluginResult.beacons[i].major == 10 &&  pluginResult.beacons[i].minor == 12){
-                    var region = "Chair of Software Engineering";
-                    var name = "Office of Prof. Atkinson";
-               
-                pluginResult.beacons[i].region = region;
-                    pluginResult.beacons[i].name = name;
-                    
-                } else if(pluginResult.beacons[i].major == 11 &&  pluginResult.beacons[i].minor == 13){
-                    var region = "Canteen";
-                    var name = "Kubus";
-            
+                } else if(pluginResult.beacons[i].major == 100 &&  pluginResult.beacons[i].minor == 2){
+                    var region = "Library A5";
+                    var name = "Bookshelf Sociology";
                     pluginResult.beacons[i].region = region;
                     pluginResult.beacons[i].name = name;
+                    
+                }else if(pluginResult.beacons[i].major == 100 &&  pluginResult.beacons[i].minor == 1){
+                    var region = "Library A5";
+                    var name = "Library PCs";
+                    pluginResult.beacons[i].region = region;
+                    pluginResult.beacons[i].name = name;
+                    
                 }
             }
+            
+            $rootscope.distance = Math.pow(10, (pluginResult.beacons[i].txPower - pluginResult.beacons[i].rssi)/(10*2));
+           
+double getDistance(int rssi, int txPower) {
+    /*
+     * RSSI = TxPower - 10 * n * lg(d)
+     * n = 2 (in free space)
+     * 
+     * d = 10 ^ ((TxPower - RSSI) / (10 * n))
+     */
+
+    return Math.pow(10d, ((double) txPower - rssi) / (10 * 2));
+}
             $rootScope.beaconList = pluginResult.beacons;
             $scope.$apply();
         });
@@ -60,17 +77,83 @@ angular.module('BeaconApp.beaconControllers', [])
 });
     
      $rootScope.navigate = function(beacon) {
-         
-         	$('#beacon').append($rootScope.beaconList[0].rssi);
-           $state.go('tab.navigation');
+         if(beacon.minor == 4)
+         {
+                 var strVar="";
+                 strVar += " <div class=\"my-header\">";
+                 strVar += "			<img class=\"my-header-image\" src=\"img\/Library-Entrance.png\" \/>";
+                 strVar += "			<img class=\"my-icon-back\" src=\"img\/icon-back.png\" ontouchend=\"history.back()\" \/>";
+                 strVar += "		<\/div>";
+                 strVar += "        ";
+                 strVar += "		<div class=\"my-content\">";
+                 strVar += "			<h1>Software Engineering<\/h1>";
+                 strVar += "			<p>Seminar Schedule<\/p>";
+                 strVar += "			<p>19. Mai 2016 <\/p>";
+                 strVar += " ";
+
+                 $('#navigationInfo').html(strVar);
+                 $('#navigationInfo').append($rootScope.beaconList[0].rssi);
+                 $state.go('tab.navigation');       
+         }
+          if(beacon.minor == 3)
+         {
+                 var strVar="";
+                 strVar += " <div class=\"my-header\">";
+                 strVar += "			<img class=\"my-header-image\" src=\"img\/Library-Informatics.png\" \/>";
+                 strVar += "			<img class=\"my-icon-back\" src=\"img\/icon-back.png\" ontouchend=\"history.back()\" \/>";
+                 strVar += "		<\/div>";
+                 strVar += "        ";
+                 strVar += "		<div class=\"my-content\">";
+                 strVar += "			<h1>Software Engineering<\/h1>";
+                 strVar += "			<p>Seminar Schedule<\/p>";
+                 strVar += "			<p>19. Mai 2016 <\/p>";
+                 strVar += " ";
+
+                 $('#navigationInfo').html(strVar);
+                 $('#navigationInfo').append($rootScope.beaconList[0].rssi);
+                 $state.go('tab.navigation');       
+         }
+          if(beacon.minor == 2)
+         {
+                 var strVar="";
+                 strVar += " <div class=\"my-header\">";
+                 strVar += "			<img class=\"my-header-image\" src=\"img\/Library-Sociology.png\" \/>";
+                 strVar += "			<img class=\"my-icon-back\" src=\"img\/icon-back.png\" ontouchend=\"history.back()\" \/>";
+                 strVar += "		<\/div>";
+                 strVar += "        ";
+                 strVar += "		<div class=\"my-content\">";
+                 strVar += "			<h1>Software Engineering<\/h1>";
+                 strVar += "			<p>Seminar Schedule<\/p>";
+                 strVar += "			<p>19. Mai 2016 <\/p>";
+                 strVar += " ";
+
+                 $('#navigationInfo').html(strVar);
+                 $('#navigationInfo').append($rootScope.beaconList[0].rssi);
+                 $state.go('tab.navigation');       
+         }
+          if(beacon.minor == 1)
+         {
+                 var strVar="";
+                 strVar += " <div class=\"my-header\">";
+                 strVar += "			<img class=\"my-header-image\" src=\"img\/Library-PCs.png\" \/>";
+                 strVar += "			<img class=\"my-icon-back\" src=\"img\/icon-back.png\" ontouchend=\"history.back()\" \/>";
+                 strVar += "		<\/div>";
+                 strVar += "        ";
+                 strVar += "		<div class=\"my-content\">";
+                 strVar += "			<h1>Software Engineering<\/h1>";
+                 strVar += "			<p>Seminar Schedule<\/p>";
+                 strVar += "			<p>19. Mai 2016 <\/p>";
+                 strVar += " ";
+
+                 $('#navigationInfo').html(strVar);
+                 $('#navigationInfo').append($rootScope.beaconList[0].rssi);
+                 $state.go('tab.navigation');       
+         }
      }
    
     
      $rootScope.broadcast = function(beacon) {
-         
-      
-         
-           if(beacon.minor == 11 && (beacon.proximity == 'ProximityImmediate' || beacon.proximity == 'ProximityNear')){          
+         if(beacon.minor == 4 && (beacon.proximity == 'ProximityImmediate' || beacon.proximity == 'ProximityNear')){          
                
 var strVar="";
 strVar += " <div class=\"my-header\">";
