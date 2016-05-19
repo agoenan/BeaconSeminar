@@ -27,12 +27,30 @@ angular.module('BeaconApp.beaconControllers', [])
                 pluginResult.beacons[i].rssiWidth = rssiWidth;
                 $scope.beacons[uniqueBeaconKey] = pluginResult.beacons[i];
                 
-                if( pluginResult.beacons[i].major == 100 && pluginResult.beacons[i].minor == 4){
+                if( pluginResult.beacons[i].major == 10 &&  pluginResult.beacons[i].minor == 11){
+                    var region = "Chair of Software Engineering";
+                    var name = "B6, 2C01";
+                    pluginResult.beacons[i].region = region;
+                    pluginResult.beacons[i].name = name;
+                    
+                } else if(pluginResult.beacons[i].major == 10 &&  pluginResult.beacons[i].minor == 12){
+                    var region = "Chair of Software Engineering";
+                    var name = "Office of Prof. Atkinson";
+                    pluginResult.beacons[i].region = region;
+                    pluginResult.beacons[i].name = name;
+                    
+                } else if(pluginResult.beacons[i].major == 11 &&  pluginResult.beacons[i].minor == 13){
+                    var region = "Canteen";
+                    var name = "Kubus";
+                    pluginResult.beacons[i].region = region;
+                    pluginResult.beacons[i].name = name;
+                    
+                } else if( pluginResult.beacons[i].major == 100 && pluginResult.beacons[i].minor == 4){
                     var region = "Library A5";
                     var name = "Entrance";
                     pluginResult.beacons[i].region = region;
                     pluginResult.beacons[i].name = name;
-                    distance = Math.pow(10, (pluginResult.beacons[i].txPower - pluginResult.beacons[i].rssi)/(10*2));
+                    distance = Math.pow(10, (pluginResult.beacons[i].txPower-pluginResult.beacons[i].rssi)/(10*2));
                     pluginResult.beacons[i].distance = distance;
                     
                 } else if(pluginResult.beacons[i].major == 100 &&  pluginResult.beacons[i].minor == 3){
@@ -153,7 +171,10 @@ double getDistance(int rssi, int txPower) {
    
     
      $rootScope.broadcast = function(beacon) {
-         if(beacon.minor == 4 && (beacon.proximity == 'ProximityImmediate' || beacon.proximity == 'ProximityNear')){          
+         
+      
+         
+           if(beacon.minor == 11 && (beacon.proximity == 'ProximityImmediate' || beacon.proximity == 'ProximityNear')){          
                
 var strVar="";
 strVar += " <div class=\"my-header\">";
@@ -214,18 +235,26 @@ strVar += "<\/ul>";
 //$('#beacon').append("");
                
                
-	
                
-         $("#legend").html(strVar); 
-               
-               
-               
-                    $state.go('tab.information');
-            }
+                $("#legend").html(strVar); 
+                $state.go('tab.information');
+        }
          
+         
+         else if(beacon.minor == 13){
+        strVar += " <div class=\"my-header\">";
+        strVar += "			<img class=\"my-header-image\" src=\"img\/breakfast.jpg\" \/>";
+        strVar += "			<img class=\"my-icon-back\" src=\"img\/icon-back.png\" ontouchend=\"history.back()\" \/>";
+        strVar += "		<\/div>";
+        strVar += "        ";
+             strVar += "		<div class=\"my-content\">";
+               $("#legend").html(strVar); 
+               $state.go('tab.information')
+             
+    }
      }
          
-         
+    
   
     
      });
