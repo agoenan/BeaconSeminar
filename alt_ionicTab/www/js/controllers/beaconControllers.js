@@ -74,18 +74,7 @@ angular.module('BeaconApp.beaconControllers', [])
                 }
             }
             
-            $rootscope.distance = Math.pow(10, (pluginResult.beacons[i].txPower - pluginResult.beacons[i].rssi)/(10*2));
-           
-double getDistance(int rssi, int txPower) {
-    /*
-     * RSSI = TxPower - 10 * n * lg(d)
-     * n = 2 (in free space)
-     * 
-     * d = 10 ^ ((TxPower - RSSI) / (10 * n))
-     */
-
-    return Math.pow(10d, ((double) txPower - rssi) / (10 * 2));
-}
+            
             $rootScope.beaconList = pluginResult.beacons;
             $scope.$apply();
         });
@@ -97,74 +86,90 @@ double getDistance(int rssi, int txPower) {
      $rootScope.navigate = function(beacon) {
          if(beacon.minor == 4)
          {
+             if(beacon.proximity == "ProximityNear"){
+                 beacon.proximity = "Near";
+             } else if(beacon.proximity == "ProximityFar"){
+                 beacon.proximity = "Far";
+             } else if(beacon.proximity == "ProximityImmediate"){
+                 beacon.proximity = "Immediate";
+             } else if(beacon.proximity == "ProximityUnknown"){
+                 beacon.proximity = "Unknown";
+             }
                  var strVar="";
-                 strVar += " <div class=\"my-header\">";
-                 strVar += "			<img class=\"my-header-image\" src=\"img\/Library-Entrance.png\" \/>";
-                 strVar += "			<img class=\"my-icon-back\" src=\"img\/icon-back.png\" ontouchend=\"history.back()\" \/>";
-                 strVar += "		<\/div>";
-                 strVar += "        ";
                  strVar += "		<div class=\"my-content\">";
-                 strVar += "			<h1>Software Engineering<\/h1>";
-                 strVar += "			<p>Seminar Schedule<\/p>";
-                 strVar += "			<p>19. Mai 2016 <\/p>";
-                 strVar += " ";
-
+                 strVar += "			<h1>" + beacon.region + "<\/h1>";
+                 strVar += "			<h2>Your Proximity to " + beacon.name + " is " + beacon.proximity + "<\/h2>";
+                 strVar += "<div class=\"my-header\">";
+                 strVar += "<img class=\"my-header-image\" src=\"img\/Library-Entrance.png\" \/>";
+                 strVar += "<img class=\"my-icon-back\" src=\"img\/icon-back.png\" ontouchend=\"history.back()\" \/>";
+                 strVar += "<\/div>";
                  $('#navigationInfo').html(strVar);
-                 $('#navigationInfo').append($rootScope.beaconList[0].rssi);
                  $state.go('tab.navigation');       
          }
-          if(beacon.minor == 3)
+        else  if(beacon.minor == 3)
          {
+                 if(beacon.proximity == "ProximityNear"){
+                 beacon.proximity = "Near";
+             } else if(beacon.proximity == "ProximityFar"){
+                 beacon.proximity = "Far";
+             } else if(beacon.proximity == "ProximityImmediate"){
+                 beacon.proximity = "Immediate";
+             } else if(beacon.proximity == "ProximityUnknown"){
+                 beacon.proximity = "Unknown";
+             }
                  var strVar="";
-                 strVar += " <div class=\"my-header\">";
-                 strVar += "			<img class=\"my-header-image\" src=\"img\/Library-Informatics.png\" \/>";
-                 strVar += "			<img class=\"my-icon-back\" src=\"img\/icon-back.png\" ontouchend=\"history.back()\" \/>";
-                 strVar += "		<\/div>";
-                 strVar += "        ";
                  strVar += "		<div class=\"my-content\">";
-                 strVar += "			<h1>Software Engineering<\/h1>";
-                 strVar += "			<p>Seminar Schedule<\/p>";
-                 strVar += "			<p>19. Mai 2016 <\/p>";
-                 strVar += " ";
-
+                 strVar += "			<h1>" + beacon.region + "<\/h1>";
+                 strVar += "			<h2>Your Proximity to " + beacon.name + " is " + beacon.proximity + "<\/h2>";
+                 strVar += "<div class=\"my-header\">";
+                 strVar += "<img class=\"my-header-image\" src=\"img\/Library-Informatics.png\" \/>";
+                 strVar += "<img class=\"my-icon-back\" src=\"img\/icon-back.png\" ontouchend=\"history.back()\" \/>";
+                 strVar += "<\/div>";
                  $('#navigationInfo').html(strVar);
-                 $('#navigationInfo').append($rootScope.beaconList[0].rssi);
+                 $state.go('tab.navigation');      
+         }
+         else if(beacon.minor == 2)
+         {
+                 if(beacon.proximity == "ProximityNear"){
+                 beacon.proximity = "Near";
+             } else if(beacon.proximity == "ProximityFar"){
+                 beacon.proximity = "Far";
+             } else if(beacon.proximity == "ProximityImmediate"){
+                 beacon.proximity = "Immediate";
+             } else if(beacon.proximity == "ProximityUnknown"){
+                 beacon.proximity = "Unknown";
+             }
+                 var strVar="";
+                 strVar += "		<div class=\"my-content\">";
+                 strVar += "			<h1>" + beacon.region + "<\/h1>";
+                 strVar += "			<h2>Your Proximity to " + beacon.name + " is " + beacon.proximity + "<\/h2>";
+                 strVar += "<div class=\"my-header\">";
+                 strVar += "<img class=\"my-header-image\" src=\"img\/Library-Sociology.png\" \/>";
+                 strVar += "<img class=\"my-icon-back\" src=\"img\/icon-back.png\" ontouchend=\"history.back()\" \/>";
+                 strVar += "<\/div>";
+                 $('#navigationInfo').html(strVar);
                  $state.go('tab.navigation');       
          }
-          if(beacon.minor == 2)
+         else if(beacon.minor == 1)
          {
+                 if(beacon.proximity == "ProximityNear"){
+                 beacon.proximity = "Near";
+             } else if(beacon.proximity == "ProximityFar"){
+                 beacon.proximity = "Far";
+             } else if(beacon.proximity == "ProximityImmediate"){
+                 beacon.proximity = "Immediate";
+             } else if(beacon.proximity == "ProximityUnknown"){
+                 beacon.proximity = "Unknown";
+             }
                  var strVar="";
-                 strVar += " <div class=\"my-header\">";
-                 strVar += "			<img class=\"my-header-image\" src=\"img\/Library-Sociology.png\" \/>";
-                 strVar += "			<img class=\"my-icon-back\" src=\"img\/icon-back.png\" ontouchend=\"history.back()\" \/>";
-                 strVar += "		<\/div>";
-                 strVar += "        ";
                  strVar += "		<div class=\"my-content\">";
-                 strVar += "			<h1>Software Engineering<\/h1>";
-                 strVar += "			<p>Seminar Schedule<\/p>";
-                 strVar += "			<p>19. Mai 2016 <\/p>";
-                 strVar += " ";
-
+                 strVar += "			<h1>" + beacon.region + "<\/h1>";
+                 strVar += "			<h2>Your Proximity to " + beacon.name + " is " + beacon.proximity + "<\/h2>";
+                 strVar += "<div class=\"my-header\">";
+                 strVar += "<img class=\"my-header-image\" src=\"img\/Library-PCs.png\" \/>";
+                 strVar += "<img class=\"my-icon-back\" src=\"img\/icon-back.png\" ontouchend=\"history.back()\" \/>";
+                 strVar += "<\/div>";
                  $('#navigationInfo').html(strVar);
-                 $('#navigationInfo').append($rootScope.beaconList[0].rssi);
-                 $state.go('tab.navigation');       
-         }
-          if(beacon.minor == 1)
-         {
-                 var strVar="";
-                 strVar += " <div class=\"my-header\">";
-                 strVar += "			<img class=\"my-header-image\" src=\"img\/Library-PCs.png\" \/>";
-                 strVar += "			<img class=\"my-icon-back\" src=\"img\/icon-back.png\" ontouchend=\"history.back()\" \/>";
-                 strVar += "		<\/div>";
-                 strVar += "        ";
-                 strVar += "		<div class=\"my-content\">";
-                 strVar += "			<h1>Software Engineering<\/h1>";
-                 strVar += "			<p>Seminar Schedule<\/p>";
-                 strVar += "			<p>19. Mai 2016 <\/p>";
-                 strVar += " ";
-
-                 $('#navigationInfo').html(strVar);
-                 $('#navigationInfo').append($rootScope.beaconList[0].rssi);
                  $state.go('tab.navigation');       
          }
      }
